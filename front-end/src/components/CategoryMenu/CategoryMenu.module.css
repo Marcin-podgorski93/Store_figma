@@ -1,0 +1,21 @@
+.categoryMenu {
+  background-color: var(--color-theme-main);
+  width: 100%;
+}
+
+.categoryMenu ul {
+  display: flex;
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.categoryMenu ul li a {
+  color: var(--color-white);
+}
+
+.categoryMenu ul li a:global(.active) {
+  text-decoration: underline;
+}
