@@ -7,7 +7,7 @@ import { MainContent } from "../MainContent/MainContent";
 import { MainMenu } from "../MainMenu/MainMenu";
 import { TopBar } from "../TopBar/TopBar";
 
-export function Layout() {
+export function Layout({ children }) {
   return (
     <>
       <MainContent>
@@ -20,6 +20,7 @@ export function Layout() {
           </div>
         </TopBar>
         <CategoryMenu />
+        {children}
       </MainContent>
       <Footer />
     </>
