@@ -1,19 +1,42 @@
 import "./styles/theme.css";
-import "./styles/global.css";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import "./styles/globals.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { MainPage } from "./views/MainPage/MainPage.jsx";
+import { Cart } from "./views/Cart/Cart";
+import { Favourites } from "./views/Favourites/Favourites";
+import { Layout } from "./components/Layout/Layout";
+import { MainPage } from "./views/MainPage/MainPage";
+import { mainPageLoader } from "./api/mainPageLoader";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <MainPage />,
+    path: "",
+    element: <Layout />,
+    children: [
+      {
+        path: "/koszyk",
+        element: <Cart />,
+      },
+      {
+        path: "/ulubione",
+        element: <Favourites />,
+      },
+      {
+        path: "/:gender?",
+        element: <MainPage />,
+        loader: mainPageLoader,
+      },
+    ],
+  },
+  {
+    path: "test",
+    element: <Layout />,
   },
 ]);
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
     <RouterProvider router={router}></RouterProvider>
-  </StrictMode>
+  </React.StrictMode>
 );
