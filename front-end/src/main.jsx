@@ -31,6 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:gender/:category/:subcategory?",
+        // The `?` after `subcategory` and `page` makes them optional
         element: <ProductsList />,
         loader: productListLoader,
       },
