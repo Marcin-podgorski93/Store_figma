@@ -8,6 +8,8 @@ import { Favourites } from "./views/Favourites/Favourites";
 import { Layout } from "./components/Layout/Layout";
 import { MainPage } from "./views/MainPage/MainPage";
 import { mainPageLoader } from "./api/mainPageLoader";
+import { productListLoader } from "./api/productListLoader";
+import { ProductsList } from "./views/ProductsList/ProductsList";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,11 @@ const router = createBrowserRouter([
         path: "/:gender?",
         element: <MainPage />,
         loader: mainPageLoader,
+      },
+      {
+        path: "/:gender/:category/:subcategory?",
+        element: <ProductsList />,
+        loader: productListLoader,
       },
     ],
   },
