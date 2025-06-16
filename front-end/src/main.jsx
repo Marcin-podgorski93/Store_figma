@@ -9,9 +9,23 @@ import { Layout } from "./components/Layout/Layout";
 import { MainPage } from "./views/MainPage/MainPage";
 import { mainPageLoader } from "./api/mainPageLoader";
 import { productListLoader } from "./api/productListLoader";
+import { ProductDetails } from "./views/ProductDetails/ProductDetails";
 import { ProductsList } from "./views/ProductsList/ProductsList";
+import { productLoader } from "./api/productLoader";
+import { addProductsToFavourites } from "./api/addProductsToFavorites";
+import { favouritesLoader } from "./api/favouritesLoader";
+import { deleteFavouriteAction } from "./api/deleteFavouriteAction";
 
 const router = createBrowserRouter([
+  {
+    path: "/add-to-favourites/:productId",
+    action: addProductsToFavourites,
+  },
+  {
+    path: "/delete-from-favourites/:favouriteId",
+    action: deleteFavouriteAction, // This action should be defined to handle the deletion of a favourite product
+    // Assuming you have a deleteFavouriteProduct function defined in your API
+  },
   {
     path: "",
     element: <Layout />,
@@ -23,6 +37,7 @@ const router = createBrowserRouter([
       {
         path: "/ulubione",
         element: <Favourites />,
+        loader: favouritesLoader,
       },
       {
         path: "/:gender?",
@@ -34,6 +49,11 @@ const router = createBrowserRouter([
         // The `?` after `subcategory` and `page` makes them optional
         element: <ProductsList />,
         loader: productListLoader,
+      },
+      {
+        path: "/:gender/:category/:subcategory/:productId",
+        element: <ProductDetails />,
+        loader: productLoader,
       },
     ],
   },

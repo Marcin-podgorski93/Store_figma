@@ -7,24 +7,30 @@ import { Logo } from "../Logo/Logo";
 import { MainContent } from "../MainContent/MainContent";
 import { MainMenu } from "../MainMenu/MainMenu";
 import { TopBar } from "../TopBar/TopBar";
+import { CurrencyContext } from "../../contexts/currencyContext";
+import { CURRENCIES } from "../../constants/curriences";
+import { useState } from "react";
 
 export function Layout() {
+  const [currency, setCurrency] = useState(CURRENCIES.PLN);
   return (
     <>
-      <MainContent>
-        <TopBar>
-          <MainMenu />
-          <Logo />
-          <div>
-            <CurrencySelector />
-            <IconMenu />
-          </div>
-        </TopBar>
-        <CategoryMenu />
-        <Outlet />
-        {/* The Outlet component renders the child routes */}
-      </MainContent>
-      <Footer />
+      <CurrencyContext.Provider value={[currency, setCurrency]}>
+        <MainContent>
+          <TopBar>
+            <MainMenu />
+            <Logo />
+            <div>
+              <CurrencySelector />
+              <IconMenu />
+            </div>
+          </TopBar>
+          <CategoryMenu />
+          <Outlet />
+          {/* The Outlet component renders the child routes */}
+        </MainContent>
+        <Footer />
+      </CurrencyContext.Provider>
     </>
   );
 }
