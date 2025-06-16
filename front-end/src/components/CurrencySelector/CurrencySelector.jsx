@@ -8,10 +8,12 @@ export function CurrencySelector() {
   console.log(currency); // Log the current currency
   return (
     <select
-      onChange={(e) =>
+      value={currency} // Set the current value of the select
+      onChange={(e) => {
         // console.log(e.target.value) || // Log the selected currency
-        setCurrency(e.target.value)
-      }
+        setCurrency(e.target.value);
+        localStorage["selectedCurrency"] = e.target.value; // Save to localStorage
+      }}
       className={styles.currencySelector}
     >
       <option value={CURRENCIES.PLN}>{CURRENCIES.PLN}</option>
