@@ -4,4 +4,5 @@ export const PATH_TO_ENDPOINT_MAPPING = {
   dziecko: "children",
 };
 
-export const BACK_END_URL = "http://localhost:3000";
+export const BACK_END_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:3000";
