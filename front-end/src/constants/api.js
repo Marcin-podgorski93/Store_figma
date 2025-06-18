@@ -4,4 +4,4 @@ export const PATH_TO_ENDPOINT_MAPPING = {
   dziecko: "children",
 };
 
-export const BACK_END_URL = "https://store-backend-uovj.onrender.com";
+export const BACK_END_URL = "http://localhost:3000";
