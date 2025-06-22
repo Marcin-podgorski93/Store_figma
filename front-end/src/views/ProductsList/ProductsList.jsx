@@ -8,6 +8,7 @@ import { CATEGORIES } from "../../constants/categories";
 export function ProductsList() {
   const { products, numberOfPages } = useLoaderData();
 
+  console.log("✅ products:", products);
   const params = useParams();
 
   const foundCategory = CATEGORIES.find((c) => c.path === params.category);

@@ -19,7 +19,10 @@ export function Product({ product }) {
       }/${product.id}`}
       className={styles.product}
     >
-      <img src={product.photos[0]} alt={product.productName} />
+      <img
+        src={product.photos?.[0] || "/placeholder.jpg"}
+        alt={product.productName}
+      />
       <h3>{product.productName}</h3>
       <p>
         <Price product={product} />

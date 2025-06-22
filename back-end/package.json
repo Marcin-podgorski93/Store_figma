@@ -1,16 +1,17 @@
 {
-    "name": "back-end",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "dev": "json-server --watch db.json"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^5.1.0",
-        "json-server": "^0.17.3"
-    }
+  "name": "back-end",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare-db": "node prepare-db.js",
+    "start": "npm run prepare-db && node server.js",
+    "dev": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
 }
